@@ -7,8 +7,8 @@ use rocket::serde::json::{Value, json};
 use rocket::response::status;
 
 #[get("/rustaceans")]
-fn get_rustraceans(_auth: BasicAuth) -> Value {
-    json!([{"id": 1, "name": "John Doe", "id": 2, "name": "John Doe again"}])
+fn get_rustaceans(_auth: BasicAuth) -> Value {
+    json!([{ "id": 1, "name": "John Doe" }, { "id": 2, "name": "John Doe again" }])
 }
 
 #[get("/rustaceans/<id>")]
@@ -48,7 +48,7 @@ async fn main(){
     let _ = rocket::build()
     // rounting
     .mount("/", routes![
-        get_rustraceans,
+        get_rustaceans,
         view_rustaceans,
         create_rustaceans,
         update_rustaceans,

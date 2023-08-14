@@ -9,6 +9,11 @@ VS Code extentions: Rust-analyzer
 
 `cargo init rocket-app —bin`
 
+`cargo build` to build your rust project \
+`cargo check` to check and analyze but not build your rust \
+`cargo run` to build and run your rust project \
+`rustfmt filename` to automatically beautify or make organize your code.
+
 > rocket-app is name of your package
 > 
 
@@ -36,7 +41,7 @@ to serialize and deserialize rust data structure we need package `serde_json` an
 ### Database ORM
 
 using diesel_cli and sqlite database
-`sudo api-get install libsqlite3-dev`
+`sudo apt-get install libsqlite3-dev`
 
 `cargo install diesel_cli --no-default-features --features sqlite`
 
@@ -71,3 +76,9 @@ to see specific migration list on one database `diesel migration list --database
 to migrate specific database `diesel migration run --database-url=postgres://postgres:admin123@localhost/rocket-app`
 
 to revert specific database migration `diesel migration revert --database-url=postgres://postgres:admin123@localhost/rocket-app`
+
+
+> after I try to installing diesel with feature sqlite and I found this to solve my error when installing diesel with feature sqlite
+> `cargo install diesel_cli --no-default-features --features "sqlite-bundled"`
+> the rca is because in my ubuntu not have libsqlite3-sys (that used internally by diesel)
+> then if I should install with bundle (which include libsqlite3-sys)
