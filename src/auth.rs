@@ -12,7 +12,6 @@ impl BasicAuth{
         if split.len() != 2 {
             return None;
         }
-
         if split[0] != "Basic" {
             return None;
         }
@@ -52,7 +51,7 @@ impl<'r> FromRequest<'r> for BasicAuth {
             }
         }
 
-        Outcome::Failure((Status::Unauthorized, ()))
+        Outcome::Error((Status::Unauthorized, ()))
     }
 }
 
